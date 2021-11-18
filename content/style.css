@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+
+    overflow: hidden;
+    color: #FFF;
+
+    font-family: 'Open Sans', sans-serif;
+}
+
+body{
+    background-color: #FFF;
+}
+
+.wrapper{
+    display: grid;
+
+    grid-template-rows: 70px 50px 1fr;
+    grid-template-columns: 1fr 1fr;
+
+    grid-template-areas: 
+    "header header"
+    "switch switch"
+    "fb-info hn-info";
+}
+
+header{
+    padding: 10px;
+
+    text-align: center;
+
+    background-color: #061826;
+    grid-area: header;
+}
+
+.switch{
+
+    background-color: #0471A6;
+    grid-area: switch;
+}
+
+.switch > button, .detail > button{
+    width: 50%;
+    height: 50px;
+
+    cursor: pointer;
+
+    font-size: 24px;
+    border: none;
+    background-color: #0471A6;
+    transition: all 0.4s;
+}
+
+.switch > button:hover{
+    opacity: 0.5;
+}
+
+.fb-info{
+    padding: 25px;
+    margin: 0 25px 0 25px;
+
+    height: calc(100vh - 165px);
+
+    overflow-y: scroll;
+
+    background-color: #FFF;
+    grid-area: fb-info;
+
+    transition: width 4s;
+}
+
+.hn-info{
+    padding: 25px;
+    margin: 0 25px 0 25px;
+
+    height: calc(100vh - 165px);
+
+    overflow-y: scroll;
+
+    background-color: #FFF;
+    grid-area: hn-info;
+
+    transition: width 4s;
+}
+
+.ar-button{
+    float: left; 
+    font-size: 30px; 
+    user-select: none; 
+    margin-right: 10px; 
+    width: 25px;
+}
+
+.top{
+    padding: 15px;
+
+    background-color: #061826;
+}
+
+.ar-button:hover{
+    cursor: pointer;
+}
+
+.content{
+    padding: 35px;
+    display: none;
+
+    font-size: 17px;
+    transition: all 1s;
+    text-align: justify;
+
+    background-color: #0471A6;
+}
+
+.sidebar{
+    position: absolute;
+    top: calc(50% - 250px);
+    left: 0;
+    height: 500px;
+    background-color: #0471A6;
+    width: 0;
+
+    transition: all 0.5s;
+}
+
+.sidebar a{
+    font-size: 24px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.sidebar a:hover{
+    opacity: 0.5;
+}
+
+.sidebar > div{
+    background-color: #0471A6;
+}
+
+.table{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 25px;
+
+    text-align: left;
+}
+
+.table th{
+    padding: 12.5px;
+    font-size: 20px;
+    text-align: center;
+
+    background-color: #061826;
+}
+
+.table tr[data-va]{
+    text-align: center;
+    background-color: #0471A6;
+    cursor: pointer;
+}
+
+.table tr > td{
+    padding: 15px;
+}
+
+.selected{
+    background-color: #54b3e2 !important; 
+}
+
+.detail{
+    width: 50%;
+    margin: 0 auto;
+    padding: 25px;
+    text-align: center;
+
+    margin-top: 25px;
+
+    grid-area: detail;
+
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #061826; 
+}
+
+.detail > div > input, select{
+    width: 100%;
+}
+
+.detail input[type=text], input[type=number], textarea, select, select{
+    outline: none;
+    padding: 5px;
+    border: none;
+    border-bottom: 2px solid rgba(148, 148, 148, 0.651);
+}
+
+.detail textarea{
+    color: #000;
+    padding: 5px;
+
+    overflow: auto;
+
+    width: calc(100% - 10px);
+    resize: none;
+}
+
+.detail > div{
+    margin: 24px 20px;
+    text-align: left;
+}
+
+.detail > div > input, select, option{
+    color: #000;
+}
+
+.add{
+    width: calc(100% - 40px);
+    margin-bottom: 15px;
+    padding: 10px;
+
+    font-size: 52px;
+    text-align: center;
+
+    max-width: 762.5px;
+
+    opacity: 1;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    background-color: #0471A6;
+    transition: opacity 0.4s; 
+}
+
+.add:hover{
+    opacity: 0.5;
+}
+
+.add a, a:link, a:visited{
+
+    margin: 0;
+
+    padding: 0;
+
+    text-decoration: none;
+
+    text-decoration-style: none;
+
+    color: white;
+}
+
+.add a{
+    opacity: 1;
+    transition: opacity 0.4s;
+}
+
+.add a:hover{
+    opacity: 0.5;
+}
+
+.entry{
+    margin-top: 20px;
+
+    border-radius: 2px;
+
+    background-color: rgb(99, 38, 15);
+}
+
+.entry h1{
+    font-size: 26px;
+}
+
+.eksde:hover{
+    cursor: pointer;
+}
+
+.eksde h1{
+    margin: 31px;
+    padding: 52px;
+}

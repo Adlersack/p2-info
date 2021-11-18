@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>FB-Infoterminal</title>
+    <script lang="javascript" src="/tmg.js"></script>
+    <script lang="javascript" src="/tco.js"></script>
+    <script lang="javascript" src="/req.js"></script>
+    <script lang="javascript" src="/evt.js"></script>
+    <script lang="javascript" src="/main.js"></script>
+    <script lang="javascript" src="/script.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <div>
+            <ul>
+                <li><a onclick="closeMenu()" href="javascript:void(0)">Close</a></li>
+                <!-- <li><a onclick="detailMode()" href="javascript:closeMenu()">Detail</a></li> -->
+                <li><a onclick="listMode()" href="javascript:closeMenu()">List</a></li>
+            </ul>
+        </div>     
+    </div>
+
+    <div class="wrapper">
+        <header>
+            <h1 onclick="openMenu()" style="float: left; height: 50px; width: 50px;">|||</h1>
+            <h1>Infoterminal FB Elektrotechnik & Informatik</h1>
+        </header>
+
+        <div class="switch">
+            <button style="float: left;" id="fb-info">FB-Info</button>
+            <button style="float: right;" id="hn-info">HN-Info</button>
+        </div>
+        
+        <div class="fb-info">
+            
+        </div>
+            
+
+        <div class="hn-info">
+            
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<div>
+    <table cellspacing="0" class="table">
+        <tr>
+        <th>Titel</th><th>Erstellt</th><th>Veroeffentlicht</th><th>Status</th>
+        </tr>
+        <input id="selectedId" type="hidden" data-id="">
+        @for let key in context@
+        <tr data-va="#key#">
+            <td>#context[key]['title']#</td>
+            <td>#context[key]['created']#</td>
+            <td>#context[key]['published']#</td>
+            <td>#context[key]['status']#</td>
+        </tr>
+        @endfor@
+
+    </table>
+    <div>
+        <a href="javascript:add()">
+            <div class="add">
+            +
+            </div>
+        </a>
+        <a href="javascript:edit()">
+            <div class="add" style="font-size: 24px;">
+            Bearbeiten
+            </div>
+        </a>
+        <a href="javascript:del()">
+            <div class="add" style="font-size: 24px;">
+            Loeschen
+            </div>
+        </a>
+        <a href="javascript:entryMode()">
+            <div class="add" style="font-size: 24px;">
+            Zurueck
+            </div>
+        </a>
+    </div>
+</div>

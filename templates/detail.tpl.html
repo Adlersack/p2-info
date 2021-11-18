@@ -1,0 +1,56 @@
+@if Object.keys(context).length == 1@
+        <div >
+            <form onsubmit="event.preventDefault();" data-validate class="detail">
+                @for let key in context@
+                <input id="selectedId" type="hidden" data-id="#key#">
+                <h1>Eintrag bearbeiten</h1>
+                <div>
+                    <label>Titel</label>
+                    <input id="title" type="text" value="#context[key]['title']#" required>
+                </div>
+                @if context[key]['status'].toLowerCase() != "veroeffentlicht"@
+                <div>
+                    <label>Verarbeitungserkennung</label>
+                    <select id="status">
+                        <option value="none">Keine</option>
+                        <option value="published">Veroeffentlicht</option> 
+                        <option value="2bpublished">Zu veroeffentlichen</option>
+                    </select>
+                </div>
+                @endif@
+                <div>
+                    <label for="content">Inhalt</label>
+                    <textarea id="content" rows="15">#context[key]['content']#</textarea>
+                </div>
+                @endfor@
+                <button onclick="validate()">Speichern</button>
+                <button onclick="listMode()">Zurück</button>
+            </form>
+        </div>
+@else@
+<div >
+    <form onsubmit="event.preventDefault();" data-validate class="detail">
+        <input id="selectedId" type="hidden" data-id="">
+        <h1>Eintrag bearbeiten</h1>
+        <div>
+            <label>Titel</label>
+            <input id="title" type="text" value="" required>
+        </div>   
+        <div>
+            <label>Verarbeitungserkennung</label>
+            <select id="status">
+                <option value="none">Keine</option>
+                <option value="published">Veroeffentlicht</option> 
+                <option value="2bpublished">Zu veroeffentlichen</option>
+            </select>
+        </div>   
+        <div>
+            <label for="content">Inhalt</label>
+            <textarea id="content" rows="10"></textarea>
+        </div>
+
+        <button onclick="validate()">Speichern</button>
+        <button onclick="listMode()">Zurück</button>
+    </form>
+</div>
+@endif@

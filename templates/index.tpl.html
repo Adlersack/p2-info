@@ -1,0 +1,25 @@
+
+    @var i = 0;@
+    @var entry;@
+    @for let key in context@
+    
+    <div class="entry">
+        <div class="top">
+            <span data-set="fb" data-id="#i#" class="ar-button">&##5125</span>
+            <h1>
+                #context[key]['title']#
+            </h1>
+            <h5>#context[key]['published']#</h5>
+        </div>
+        <div data-set="fb" data-id="#i#" class="content">
+            <p>
+                #context[key]['content']#
+            </p>
+        </div>
+    </div>
+    
+    @i = i + 1;@
+    @endfor@
+
+            
+
