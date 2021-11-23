@@ -7,11 +7,28 @@ import uuid
 import markdown2
 import cherrypy
 
+@cherrypy.expose
 class Application_cl(object):
 
     def __init__(self):
         self.data_o = {}
         self.feed_o = feedparser.parse("https://www.hs-niederrhein.de/rss")
+
+    @cherrypy.tools.accept(media='application/json')
+    def GET(self):
+
+        print(cherrypy.request.path_info)
+
+        if cherrypy.request.path_info == "/publishedHNInfos":
+            rssList = self.getHNList()
+        elif cherrypy.request.path_info == "/publishedFBInfos":
+            rssList = self.getFBList()
+
+        if rssList == -1:
+            cherrypy.response.status = 500
+            return "Datei konnte nicht gefunden werden"
+        else:
+            return json.dumps(rssList)
 
     def initList(self):
         with open('data/rss_feed.json', 'r+') as fp:

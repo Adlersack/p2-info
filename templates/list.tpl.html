@@ -3,7 +3,7 @@
         <tr>
         <th>Titel</th><th>Erstellt</th><th>Veroeffentlicht</th><th>Status</th>
         </tr>
-        <input id="selectedId" type="hidden" data-id="">
+        <input id="selectedId" type="hidden" data-row="" data-id="">
         @for let key in context@
         <tr data-va="#key#">
             <td>#context[key]['title']#</td>
@@ -30,7 +30,7 @@
             Loeschen
             </div>
         </a>
-        <a href="javascript:entryMode()">
+        <a href="/itviewer">
             <div class="add" style="font-size: 24px;">
             Zurueck
             </div>

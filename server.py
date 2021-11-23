@@ -22,22 +22,6 @@ class API(object):
         self.app = application.Application_cl()
         
         self.app.initList()
-
-    @cherrypy.tools.accept(media='application/json')
-    def GET(self):
-
-        print(cherrypy.request.path_info)
-
-        if cherrypy.request.path_info == "/publishedHNInfos":
-            rssList = self.app.getHNList()
-        elif cherrypy.request.path_info == "/publishedFBInfos":
-            rssList = self.app.getFBList()
-
-        if rssList == -1:
-            cherrypy.response.status = 500
-            return "Datei konnte nicht gefunden werden"
-        else:
-            return json.dumps(rssList)
    
     def POST(self):
         return 0
@@ -47,7 +31,8 @@ if __name__ == "__main__":
         '/': {
             'tools.staticdir.root': os.path.abspath(os.getcwd()),
             'tools.staticdir.on': True,
-            'tools.staticdir.dir': './content'
+            'tools.staticdir.dir': './content',
+            'tools.staticdir.index': './content/index.html'
         },
         '/publishedHNInfos': {
             'request.dispatch': cherrypy.dispatch.MethodDispatcher(),
@@ -60,16 +45,76 @@ if __name__ == "__main__":
         },
         '/templates': {
             'request.dispatch': cherrypy.dispatch.MethodDispatcher(),
+        },
+        '/itviewer': {
+            'tools.staticdir.root': os.path.abspath(os.getcwd()),
+            'tools.staticdir.on': True,
+            'tools.staticdir.dir': './content',
+            'tools.staticdir.index': './viewer.html'
+        },
+        '/iteditor': {
+            'tools.staticdir.root': os.path.abspath(os.getcwd()),
+            'tools.staticdir.on': True,
+            'tools.staticdir.dir': './content',
+            'tools.staticdir.index': './editor.html'
         }
         
     }
 
     webapp = Server()
-    webapp.publishedHNInfos = API()
-    webapp.publishedFBInfos = API()
+
+    webapp.publishedHNInfos = application.Application_cl()
+    webapp.publishedFBInfos = application.Application_cl()
+
     webapp.templates = template.Template()
+
     webapp.fbinfo = handler.Handler_cl()
 
     cherrypy.quickstart(webapp, '/', conf)
+
+    # conf = {
+
+    #     '/': {
+    #         'tools.staticdir.root': os.path.abspath(os.getcwd()),
+    #         'tools.staticdir.on': True,
+    #         'tools.staticdir.dir': './content',
+    #         'tools.staticdir.index': './content/index.html'
+    #     }
+        
+    # }
+
+    # methConf = {
+    #     '/': {
+    #         'request.dispatch': cherrypy.dispatch.MethodDispatcher(),
+    #     }
+    # }
+
+    # viewConf = {
+    #     '/': {
+    #         'tools.staticdir.root': os.path.abspath(os.getcwd()),
+    #         'tools.staticdir.on': True,
+    #         'tools.staticdir.dir': './content',
+    #         'tools.staticdir.index': './viewer.html'
+    #     }
+
+    # }
+
+    # editConf = {
+    #     '/': {
+    #         'tools.staticdir.root': os.path.abspath(os.getcwd()),
+    #         'tools.staticdir.on': True,
+    #         'tools.staticdir.dir': './content',
+    #         'tools.staticdir.index': './editor.html'
+    #     } 
+    # }
+
+    # cherrypy.tree.mount(None, "/", conf)
+    # cherrypy.tree.mount(application.Application_cl(), "/publishedHNInfos", methConf)
+    # cherrypy.tree.mount(application.Application_cl(), "/publishedFBInfos", methConf)
+    # cherrypy.tree.mount(None, "/itviewer", viewConf)
+    # cherrypy.tree.mount(None, "/iteditor", editConf)
+
+    # cherrypy.engine.start()
+    # cherrypy.engine.block()
 
     

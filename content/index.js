@@ -237,12 +237,6 @@ function selectRow(event){
     }
 }
 
-function listMode(){
-    var lis = new Detail("fb-info", "list.tpl.html");
-
-    lis.render_px();
-}
-
 window.onload = function(){
     var col1 = new Column("fb-info", "index.tpl.html", "/publishedFBInfos");
     var col2 = new Column("hn-info", "dfhdfh.tpl.html", "/publishedHNInfos");
@@ -258,5 +252,10 @@ window.onload = function(){
     setTimeout(function(){
         col1.render_px();
         col2.render_px();
-    }, 2);
+    }, 7);
+
+    setInterval(function(){
+        col1.render_px();
+        col2.render_px();
+    }, 5000);
 }

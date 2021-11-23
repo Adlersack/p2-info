@@ -57,61 +57,6 @@ function openEntry(event_opl) {
         }
 }
 
-async function GET(url){
-    let response = await fetch(url);
-
-    console.log(response.status);
-    console.log(response.statusText);
-
-    if(response.ok && url == "/publishedHNInfos"){
-        let entry = document.getElementsByClassName("hn-info")[0].getElementsByClassName("entry");
-        let i = 0;
-        rss = await response.json();
-
-        console.log("eksde")
-        //console.log(rss_o[0]['published']);
-        console.log(entry[0].getElementsByTagName("h1")[0].innerHTML);
-
-        for (rss_o in rss){
-            entry[i].getElementsByTagName("h1")[0].innerHTML = rss[rss_o]['title'];
-            entry[i].getElementsByTagName("h5")[0].innerHTML = formatEntryDate(rss[rss_o]['published'])
-            entry[i].lastElementChild.innerHTML = rss[rss_o]['content'];
-            i++;
-        }
-
-        console.log(rss_o);
-    } else if(response.ok && url == "/publishedFBInfos"){
-        console.log(response.json());
-    }
-}
-
-async function DELETE(url, id){
-    if(url.substr(0, 7) == "/fbinfo"){
-
-        let response = await fetch(url + "/" + id, {
-            method: "DELETE"
-        })
-    }
-}
-
-async function POST(url, data){
-    if(url.substr(0, 7) == "/fbinfo"){
-        let content = document.getElementById("content").value;
-        
-        console.log(content);
-
-        let response = await fetch(url, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'text/plain'
-            },
-            body: content
-        });
-
-        console.log(response.text());
-    }
-}
-
 function eksde(e){
     e.preventDefault();
     console.log(":))))))))")
